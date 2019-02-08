@@ -199,8 +199,7 @@ function voteme_getvotelink($post_ID = false) {
 		.show_loader {position:relative; pointer-events: none; }
 		.show_loader:after {content: " "; display: block; position: absolute; width: 110%; height: 140%; top: -20%; left: -5%; background-image:url(<?php echo PKTHUMBURL; ?>/imgs/loading.gif); background-repeat: no-repeat; background-color: rgba(0,0,0,0.5); background-position: 50% 50%; }
 	</style>
-	<?php
-return ob_get_clean();
+	<?php return ob_get_clean();
 
 }
 
@@ -208,7 +207,7 @@ function voteme_printvotelink($content) {
 	$c = voteme_getvotelink();
 	return $c . $content;
 }
-// add_filter('the_content', 'voteme_printvotelink');
+add_filter('the_content', 'voteme_printvotelink');
 
 add_action('wp_footer', 'pk_thumb_ajax_func');
 function pk_thumb_ajax_func() {
