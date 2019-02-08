@@ -207,7 +207,13 @@ function voteme_printvotelink($content) {
 	$c = voteme_getvotelink();
 	return $c . $content;
 }
-add_filter('the_content', 'voteme_printvotelink');
+// add_filter('the_content', 'voteme_printvotelink', 99);
+
+// shortcode, add on selected post
+add_shortcode('like_dislike_button', 'like_dislike_button');
+function like_dislike_button() {
+	return voteme_getvotelink();
+}
 
 add_action('wp_footer', 'pk_thumb_ajax_func');
 function pk_thumb_ajax_func() {
